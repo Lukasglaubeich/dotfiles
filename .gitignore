@@ -1,0 +1,35 @@
+
+# macOS system files
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Thumbnails
+._*
+
+# Icon files
+Icon?
+._*
+
+# Git metadata (optional if your repo is nested inside another)
+.git/
+
+# Temporary files
+*.swp
+*.swo
+*.tmp
+*.bak
+
+# Python cache (since you have ranger plugins with __pycache__)
+__pycache__/
+*.py[cod]
+
+# Vim swap files
+*.swp
+*.swo
+
+# Node / JS (if you ever have JS files)
+node_modules/
+
+# Logs
+*.log

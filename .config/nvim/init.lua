@@ -1,7 +1,9 @@
 -- init.lua (your file with diagnostics fixed for Neovim 0.11+)
-vim.cmd("colorscheme onedark")
+vim.cmd("colorscheme catppuccin-frappe")
 
 vim.o.termguicolors = true
+vim.cmd("hi Normal guibg=NONE ctermbg=NONE")
+vim.cmd("hi NonText guibg=NONE ctermbg=NONE")
 vim.opt.mouse = ""
 local modes = {"n", "i", "v", "c"}
 local opts = { noremap = true, silent = true }
@@ -10,6 +12,21 @@ for _, key in ipairs({ "<Up>", "<Down>", "<Left>", "<Right>" }) do
 end
 
 require('plugins')
+
+-- indent guides smooth scroll and notifications
+
+require("ibl").setup()
+require('neoscroll').setup()
+
+vim.notify = require("notify")
+vim.o.completeopt = "menuone,noselect"
+vim.o.foldmethod = "expr"
+vim.o.foldexpr = "nvim_treesitter#foldexpr()"
+vim.o.foldenable = false
+vim.opt.number = true
+vim.opt.relativenumber = true
+vim.g.onedark_italic = 1
+
 
 -- spectre
 require('spectre').setup({
@@ -73,16 +90,19 @@ require('lualine').setup{
   options = {
 	  component_separators = {left = '', right = ''},
 	  section_separators = {left = '', right = ''},
+	  -- added
+	  globalstatus = true,
   },
   sections = {
     lualine_a = {'mode'},
     lualine_b = {'branch', 'diff', 'diagnostics'},
-    lualine_c = {
-      'filename',
-      function()
-        return vim.fn
-      end},
-    lualine_x = {'encoding', 'fileformat', 'filetype'},
+    -- lualine_c = {
+    --  'filename',
+    --  function()
+    --    return vim.fn
+    --  end},
+--    lualine_x = {'encoding', 'fileformat', 'filetype'},
+    lualine_x = {'filetype'},
     lualine_y = {'progress'},
     lualine_z = {'location'}
   },
@@ -178,3 +198,12 @@ do
     pcall(vim.cmd, [[highlight LspDiagnosticsVirtualTextError guifg=#ff6b6b gui=bold]])
   end
 end
+
+require("config.alpha")
+vim.api.nvim_create_autocmd("VimEnter", {
+    callback = function()
+        local alpha = require("alpha")
+        local dashboard = require("alpha.themes.dashboard")
+        alpha.setup(dashboard.opts)
+    end
+})

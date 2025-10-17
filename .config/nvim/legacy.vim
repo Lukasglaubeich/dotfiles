@@ -257,7 +257,7 @@ set grepprg=rg\ --vimgrep\ --smart-case\ --follow
 set termguicolors
 let g:gruvbox_contrast_dark='hard'
 let g:gruvbox_contrast_light='hard'
-colorscheme gruvbox
+colorscheme catppuccin-macchiato
 hi LspCxxHlGroupMemberVariable guifg=#83a598
 
 " alt-a as esc-a for select

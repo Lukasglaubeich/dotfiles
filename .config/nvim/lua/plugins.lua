@@ -49,4 +49,9 @@ return require('packer').startup(function()
     use 'folke/tokyonight.nvim'
     use 'navarasu/onedark.nvim'
     use 'nvim-tree/nvim-web-devicons'
+    use 'karb94/neoscroll.nvim'            -- smooth scrolling
+    use 'rcarriga/nvim-notify'            -- notifications
+    use 'lukas-reineke/indent-blankline.nvim' -- indent guides
+    use 'goolord/alpha-nvim'              -- start/dashboard
+    use 'akinsho/toggleterm.nvim'
 end)
